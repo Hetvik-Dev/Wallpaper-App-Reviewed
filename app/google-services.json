@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "794174002680",
+    "project_id": "login-register-firebase-334d1",
+    "storage_bucket": "login-register-firebase-334d1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:794174002680:android:bb028fc6f7a9c75ffef20d",
+        "android_client_info": {
+          "package_name": "com.example.wallpaperapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcbmAOguSM9CvIoYhh3kzLlZpMMMPMToc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:794174002680:android:8cf9155a77d0b788fef20d",
+        "android_client_info": {
+          "package_name": "com.example.wallpaper_dead_reviewed"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcbmAOguSM9CvIoYhh3kzLlZpMMMPMToc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
