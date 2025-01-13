@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/black"
-    tools:context=".presentation.view.MainActivity">
+    tools:context="com.example.wallpaper_dead_reviewed.api.presentation.view.MainActivity">
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottieBackground"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        app:lottie_rawRes="@raw/artshpere_background"
+        app:lottie_rawRes="@raw/json_new_background"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"/>
 

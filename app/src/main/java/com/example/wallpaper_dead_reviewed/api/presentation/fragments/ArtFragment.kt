@@ -1,8 +1,6 @@
 package com.example.wallpaper_dead_reviewed.api.presentation.fragments
 
-import android.app.Activity
 import android.content.Context
-import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -27,8 +25,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.fragment.app.Fragment
+import com.airbnb.lottie.compose.LottieAnimation
+import com.airbnb.lottie.compose.LottieCompositionSpec
+import com.airbnb.lottie.compose.LottieConstants
+import com.airbnb.lottie.compose.animateLottieCompositionAsState
+import com.airbnb.lottie.compose.rememberLottieComposition
 import com.example.wallpaper_dead_reviewed.R
-import com.example.wallpaper_dead_reviewed.api.presentation.composables.LottieComposables.LottieBackground
 import com.google.firebase.storage.FirebaseStorage
 import java.util.UUID
 
@@ -59,7 +61,7 @@ class ArtFragment : Fragment() {
         return ComposeView(requireContext()).apply {
             setContent {
 //                LottieBackground {
-                    ArtScreen()
+                ArtScreen()
 //                }
             }
         }
@@ -69,12 +71,24 @@ class ArtFragment : Fragment() {
     fun ArtScreen() {
         val context = LocalContext.current
 
+//        // Lottie Animation for background
+//        val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.artshpere_background))
+//        val progress by animateLottieCompositionAsState(
+//            composition,
+//            iterations = LottieConstants.IterateForever
+//        )
+
         Box(
             modifier = Modifier
                 .fillMaxSize() // Ensure it fills the entire screen
                 .background(Color.White), // Make background transparent
             contentAlignment = Alignment.Center
         ) {
+//            LottieAnimation(
+//                composition = composition,
+//                iterations = LottieConstants.IterateForever,
+//                modifier = Modifier.fillMaxSize()
+//            )
             Column(
                 modifier = Modifier
                     .padding(16.dp)

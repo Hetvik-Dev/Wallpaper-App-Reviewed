@@ -38,11 +38,11 @@ class MainActivity : AppCompatActivity() {
         FirebaseApp.initializeApp(this)
         setContentView(binding.root)
 
-        lottieView = findViewById<LottieAnimationView>(R.id.lottieBackground)
-
-        getSupportActionBar()?.setDisplayShowTitleEnabled(false)
-
+        lottieView = findViewById(R.id.lottieBackground)
+        lottieView.setAnimation(R.raw.json_new_background)
         lottieView.playAnimation()
+
+        supportActionBar?.setDisplayShowTitleEnabled(false)
 
         binding.bottomNavigationView.background = null
         binding.bottomNavigationView.setOnItemSelectedListener { item ->

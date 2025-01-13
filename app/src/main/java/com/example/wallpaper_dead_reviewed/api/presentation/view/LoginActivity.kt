@@ -1,9 +1,11 @@
 package com.example.wallpaper_dead_reviewed.api.presentation.view
 
-import android.content.ContentUris
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.text.InputType
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -16,7 +18,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.wallpaper_dead_reviewed.R
-import com.example.wallpaper_dead_reviewed.api.presentation.fragments.ArtFragment
+import com.example.wallpaperapp.presentation.fragments.UserProfileScreen
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
@@ -88,27 +90,40 @@ class LoginActivity : AppCompatActivity() {
         val email = etUsername.text.toString().trim()
         val password = etPassword.text.toString().trim()
 
+        val userName = intent.getStringExtra("USER_NAME") ?: "Unknown"
+
         if (email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Please fill in all details", Toast.LENGTH_SHORT).show()
             return
         }
 
-        // Show progress bar
         progressBar.visibility = View.VISIBLE
 
-        // Firebase login
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 progressBar.visibility = View.GONE
                 if (task.isSuccessful) {
                     Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
-                    // Navigate to MainActivity
-                    val intent = Intent(this, MainActivity::class.java)
-                    startActivity(intent)
-                    finish()
+
+                    val userProfileFragment = UserProfileScreen().apply {
+                        arguments = Bundle().apply {
+                            Log.d("LoginActivity", "User Name: $userName, User Email: $email")
+                            putString("USER_NAME", userName)
+                            putString("USER_EMAIL", email)
+                        }
+                    }
+
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frame_layout_login, userProfileFragment)
+                        .addToBackStack(null)
+                        .commit()
+
+//                    Handler(Looper.getMainLooper()).postDelayed({
+                        finish()
+//                    }, 500)
+
                 } else {
                     Toast.makeText(this, "Login Failed: ${task.exception?.message}", Toast.LENGTH_LONG).show()
-                    // Optionally, prompt the user to register if login fails
                     showRegistrationPrompt()
                 }
             }

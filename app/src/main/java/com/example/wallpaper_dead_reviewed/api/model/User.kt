@@ -1,4 +1,4 @@
-package firebase
+package com.example.wallpaper_dead_reviewed.api.model
 
 data class User(
     val name: String,
